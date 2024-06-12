@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class warrantyCreateResponse {
+public class WarrantyCreateResponse {
+    String response;
     String id;
 }

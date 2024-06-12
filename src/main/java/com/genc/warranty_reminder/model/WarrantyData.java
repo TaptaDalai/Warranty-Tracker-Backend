@@ -14,16 +14,19 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class warrantyData {
+public class WarrantyData {
 
     @Id
     private String id;
-    private MultipartFile file;
+    private String userMail;
     private String productName;
-    private String cost;
+    private String brand;
+    private String model;
     private LocalDate purchaseDate;
     private Integer warrantyYears;
-    private String serialNum;
+    private LocalDate expiredDate;
+    private MultipartFile productImage;
+    private MultipartFile document;
     private String description;
     private String link;
 }
