@@ -1,7 +1,8 @@
 package com.genc.warranty_reminder.api;
 
 
-import com.genc.warranty_reminder.DTO.WarrantyCreateResponse;
+import
+        com.genc.warranty_reminder.DTO.WarrantyCreateResponse;
 
 import com.genc.warranty_reminder.model.WarrantyData;
 
