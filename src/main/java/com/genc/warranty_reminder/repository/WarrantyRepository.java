@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface WarrantyRepository extends MongoRepository<WarrantyData,String> {
-    List<WarrantyData> findByUserMail(String userMail);
+//    List<WarrantyData> findByUserMail(String userMail);
 }

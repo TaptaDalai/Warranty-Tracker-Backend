@@ -39,7 +39,7 @@ public class WarrantyController {
 
     @GetMapping(path = "/products/{userMail}")
     public ResponseEntity<List<WarrantyData>> productListByEmail(@PathVariable String userMail) {
-        return new ResponseEntity<>(warrantyService.productListByEmail(userMail), HttpStatus.OK);
+        return new ResponseEntity<>(warrantyService.productList(userMail), HttpStatus.OK);
     }
 
     @PutMapping(path = "/warranties/update/{id}")

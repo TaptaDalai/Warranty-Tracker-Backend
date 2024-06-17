@@ -4,6 +4,7 @@ import com.genc.warranty_reminder.DTO.WarrantyCreateResponse;
 import com.genc.warranty_reminder.model.WarrantyData;
 import com.genc.warranty_reminder.repository.WarrantyRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class WarrantyService {
     private final WarrantyRepository warrantyRepository;
@@ -38,8 +40,22 @@ public class WarrantyService {
     }
 
     //get warranties by email
-    public List<WarrantyData> productListByEmail(String userMail) {
-        return warrantyRepository.findByUserMail(userMail);
+    public List<WarrantyData> productList(String email )
+    {
+        List<WarrantyData>list=this.warrantyRepository.findAll();
+        List<WarrantyData>warrantyList=new ArrayList<>();
+        for(WarrantyData data:list)
+        {
+            log.info("enter for loop");
+
+            if(data.getUserMail().equals(email))
+            {
+                log.info("enter if condition");
+                warrantyList.add(data);
+            }
+
+        }
+        return warrantyList;
 
     }
 
@@ -51,7 +67,7 @@ public class WarrantyService {
 
     //delete warranty by id
     public WarrantyCreateResponse deleteWarranty(String id){
-        this.warrantyRepository.deleteById(id);
+        warrantyRepository.deleteById(id);
         return WarrantyCreateResponse.builder().id(id).response("Warranty data has been Deleted Successfully").build();
     }
 
