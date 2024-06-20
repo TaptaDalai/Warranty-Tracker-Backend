@@ -19,7 +19,13 @@ import java.util.List;
 @RequestMapping("/api")
 public class UserAuthentication {
     private final AuthenticationService authenticationService;
-    @PostMapping(path="/userRegistration",consumes= MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping("/GetUserRegistration")
+    String anyfun()
+    {
+        return "i am working";
+    }
+
+    @PostMapping(path="/userPostRegistration",consumes= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserRegistrationResponse> userRegistration(@RequestBody UserAuthenticationData user)
     {
         return new  ResponseEntity<>(authenticationService.createUser(user), HttpStatus.OK);

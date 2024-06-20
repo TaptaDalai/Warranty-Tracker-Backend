@@ -21,7 +21,7 @@ public class WarrantyController {
 
     private final WarrantyService warrantyService;
 
-    @GetMapping
+    @GetMapping("/check")
     String anyMethod()
     {
         return "Hello Young Experts";

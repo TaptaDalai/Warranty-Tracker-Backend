@@ -16,5 +16,6 @@ public class UserAuthenticationData {
     private String fullName;
     private String email;
     private String password;
+    private String role;
 
 }

@@ -29,7 +29,7 @@ public class AuthenticationService {
         {
             throw new NullPointerException("user Not Found");
         }
-        return UserDetails.builder().id(user.get().getId()).fullName(user.get().getFullName()).email(user.get().getEmail()).build();
+        return UserDetails.builder().id(user.get().getId()).fullName(user.get().getFullName()).email(user.get().getEmail()).role(user.get().getRole()).build();
 
     }
     public List<UserDetails>getAlluser()
@@ -38,18 +38,20 @@ public class AuthenticationService {
         List<UserDetails>userResponseList = new ArrayList<>();
         for(UserAuthenticationData user:userList)
         {
-            UserDetails temp=new UserDetails(user.getId(),user.getFullName(),user.getEmail());
+            UserDetails temp=new UserDetails(user.getId(),user.getFullName(),user.getEmail(),user.getRole());
             userResponseList.add(temp);
         }
         return userResponseList;
     }
-    public void deleteOneUser(String id)
+    public  String deleteOneUser(String id)
     {
         Optional<UserAuthenticationData> user=this.userRepository.findById(id);
         if(user.isPresent())
         {
             this.userRepository.deleteById(id);
+            return "user has been deleted ("+id+")";
         }
+        return "user was not found ("+id+")";
     }
 public UserRegistrationResponse updateUser(UserDetails user)
 {
@@ -58,6 +60,7 @@ public UserRegistrationResponse updateUser(UserDetails user)
     {
         existedUser.get().setFullName(user.getFullName());
         existedUser.get().setEmail(user.getEmail());
+        existedUser.get().setRole(user.getRole());
         this.userRepository.save(existedUser.get());
 
     }
